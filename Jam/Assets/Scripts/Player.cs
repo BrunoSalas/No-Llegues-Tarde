@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(Rigidbody))]
 public class Player : MonoBehaviour
@@ -13,6 +14,10 @@ public class Player : MonoBehaviour
     public float impulseY;
     public bool left;
     public bool right;
+    public int puntuaje;
+    public bool final;
+    public bool perder;
+    public Text text;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,7 +28,15 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Move();
+        if (!perder)
+        {
+            if (!final)
+            {
+                Move();
+            } 
+        }
+
+        text.text = "" + puntuaje.ToString();
     }
 
     public void ButtonRightDown()
@@ -60,6 +73,19 @@ public class Player : MonoBehaviour
         {
             Debug.Log("ds");
             rb.AddForce(transform.position.x, transform.position.y + impulseY, transform.position.z * impulseZ, ForceMode.Impulse);
+        }
+        if (other.CompareTag("Coin"))
+        {
+            puntuaje += 2;
+            Destroy(other.gameObject);
+        }
+        if (other.CompareTag("Final"))
+        {
+            final = true;
+        }
+        if (other.CompareTag("Obstaculo"))
+        {
+            perder = true;
         }
     }
 }

@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Impulsores
+  - Coin
+  - Final
+  - Obstaculo
   layers:
   - Default
   - TransparentFX
