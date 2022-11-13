@@ -26,14 +26,15 @@ public class Player : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+  
+    private void FixedUpdate()
     {
         if (!perder)
         {
             if (!final)
             {
                 Move();
-            } 
+            }
         }
 
         text.text = "" + puntuaje.ToString();

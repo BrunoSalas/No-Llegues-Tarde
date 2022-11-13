@@ -14,11 +14,11 @@ public class Menu : MonoBehaviour
     public GameObject txt;
     public GameObject boton;
 
-    private void Update()
+    private void FixedUpdate()
     {
-        if(player.GetComponent<Player>().perder)
+        if (player.GetComponent<Player>().perder)
         {
-            pierde.SetActive(true); 
+            pierde.SetActive(true);
             txt.SetActive(true);
             boton.SetActive(true);
         }
@@ -28,7 +28,6 @@ public class Menu : MonoBehaviour
             txt.SetActive(true);
             boton.SetActive(true);
         }
-
     }
     public void Tutorial()
     {
