@@ -18,6 +18,9 @@ public class Player : MonoBehaviour
     public bool final;
     public bool perder;
     public Text text;
+
+    public SpawnManager spawnManager;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -88,5 +91,7 @@ public class Player : MonoBehaviour
         {
             perder = true;
         }
+
+        spawnManager.SpawnTriggerEntered();
     }
 }
