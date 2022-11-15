@@ -10,6 +10,9 @@ TagManager:
   - Obstaculo
   - Spawn Trigger
   - Obstacle
+  - Cerebro
+  - Text
+  - Text2
   layers:
   - Default
   - TransparentFX

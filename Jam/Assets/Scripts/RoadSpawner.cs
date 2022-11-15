@@ -8,7 +8,8 @@ public class RoadSpawner : MonoBehaviour
     public List<GameObject> roads;
     public List<GameObject> obstacles;
     private float offset = 72f; 
-    private int lastSpawnZ = 80;
+    public float lastSpawnZ ;
+    public GameObject[] a;
     [SerializeField]
     Transform player;
     public bool spawnObstacles;
@@ -20,12 +21,19 @@ public class RoadSpawner : MonoBehaviour
         }
         Obstacule();
     }
+    private void Update()
+    {
+
+        a = GameObject.FindGameObjectsWithTag("Obstacle");
+    }
 
     public void Obstacule()
     {
-        if(spawnObstacles)
+        if (spawnObstacles)
         {
-            lastSpawnZ += (int)player.position.z;
+            float z;
+            z = lastSpawnZ + player.position.z;
+            Debug.Log(z);
 
             GameObject obstacle = obstacles[Random.Range(0, obstacles.Count)];
             /*GameObject obstacle = obstacles[0];Debug.Log(obstacle);
@@ -33,7 +41,8 @@ public class RoadSpawner : MonoBehaviour
             float newZ = obstacles[obstacles.Count - 1].transform.position.z + offset;
             obstacle.transform.position = new Vector3(0, 0, newZ); Debug.Log(obstacle.transform.position);
             obstacles.Add(obstacle);*/
-            Instantiate(obstacle, new Vector3(0, 0, lastSpawnZ), obstacle.transform.rotation);
+            Instantiate(obstacle, new Vector3(0, 0, z), obstacle.transform.rotation);
+            spawnObstacles = false;
         }
     }
 

@@ -6,6 +6,7 @@ using UnityEngine.UI;
 [RequireComponent(typeof(Rigidbody))]
 public class Player : MonoBehaviour
 {
+    public coin a;
     public Rigidbody rb;
     public float velocity;
     public float x;
@@ -79,7 +80,7 @@ public class Player : MonoBehaviour
         }
         if (other.CompareTag("Coin"))
         {
-            puntuaje += 2;
+            a.puntuaje += 2;
             Destroy(other.gameObject);
         }
         if (other.CompareTag("Final"))
@@ -96,6 +97,7 @@ public class Player : MonoBehaviour
         }
         if (other.CompareTag("Obstacle"))
         {
+            Debug.Log(other.gameObject.name);
             spawnManager.SpawnTriggerObstacle();
         }
     }

@@ -22,6 +22,7 @@ public class SpawnManager : MonoBehaviour
     }
     public void SpawnTriggerObstacle()
     {
+        roadSpawner.spawnObstacles = true;
         roadSpawner.Obstacule();
     }
 }

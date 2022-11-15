@@ -6,13 +6,22 @@ using UnityEngine.SceneManagement;
 public class Menu : MonoBehaviour
 {
     public GameObject game;
-    public GameObject menú;
+    public GameObject menu;
     public GameObject instruciones;
     public GameObject player;
     public GameObject ganar;
     public GameObject pierde;
     public GameObject txt;
     public GameObject boton;
+    public GameObject soundOff;
+    public coin coin;
+    private bool sound;
+    public Camera cam;
+
+    private void Start()
+    {
+        cam = Camera.FindObjectOfType<Camera>();
+    }
 
     private void FixedUpdate()
     {
@@ -31,7 +40,7 @@ public class Menu : MonoBehaviour
     }
     public void Tutorial()
     {
-        menú.SetActive(false);
+        menu.SetActive(false);
         instruciones.SetActive(true);
     }
     public void Inicio()
@@ -44,10 +53,26 @@ public class Menu : MonoBehaviour
     public void Salir()
     {
         Application.Quit();
+        coin.puntuaje = 0;
     }
     public void SceneChange(string sceneName)
     {
         SceneManager.LoadScene(sceneName);
     }
 
+    public void SoundSfx()
+    {
+        if(sound)
+        {
+            cam.GetComponent<Camera>().GetComponent<AudioListener>().enabled = false;
+            sound = !sound;
+            soundOff.SetActive(true);
+        }
+        else
+        {
+            cam.GetComponent<Camera>().GetComponent<AudioListener>().enabled = true;
+            sound = !sound;
+            soundOff.SetActive(false);
+        }
+    }
 }
