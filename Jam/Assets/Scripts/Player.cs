@@ -18,6 +18,8 @@ public class Player : MonoBehaviour
     public int puntuaje;
     public bool final;
     public bool perder;
+    public AudioClip audio;
+    public AudioSource audioSource;
     public Text text;
 
     public SpawnManager spawnManager;
@@ -81,6 +83,7 @@ public class Player : MonoBehaviour
         if (other.CompareTag("Coin"))
         {
             a.puntuaje += 2;
+            audioSource.PlayOneShot(audio);
             Destroy(other.gameObject);
         }
         if (other.CompareTag("Final"))

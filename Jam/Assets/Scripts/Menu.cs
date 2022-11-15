@@ -15,6 +15,8 @@ public class Menu : MonoBehaviour
     public GameObject boton;
     public GameObject soundOff;
     public coin coin;
+    public AudioSource audioSource;
+    public AudioClip audio;
     private bool sound;
     public Camera cam;
 
@@ -40,11 +42,13 @@ public class Menu : MonoBehaviour
     }
     public void Tutorial()
     {
+        audioSource.PlayOneShot(audio);
         menu.SetActive(false);
         instruciones.SetActive(true);
     }
     public void Inicio()
     {
+        audioSource.PlayOneShot(audio);
         instruciones.SetActive(false);
         player.GetComponent<Player>().velocity = 0.8f;
         game.SetActive(true);
@@ -52,11 +56,13 @@ public class Menu : MonoBehaviour
 
     public void Salir()
     {
+        audioSource.PlayOneShot(audio);
         Application.Quit();
         coin.puntuaje = 0;
     }
     public void SceneChange(string sceneName)
     {
+        audioSource.PlayOneShot(audio);
         SceneManager.LoadScene(sceneName);
     }
 
@@ -64,12 +70,14 @@ public class Menu : MonoBehaviour
     {
         if(sound)
         {
+            audioSource.PlayOneShot(audio);
             cam.GetComponent<Camera>().GetComponent<AudioListener>().enabled = false;
             sound = !sound;
             soundOff.SetActive(true);
         }
         else
         {
+            audioSource.PlayOneShot(audio);
             cam.GetComponent<Camera>().GetComponent<AudioListener>().enabled = true;
             sound = !sound;
             soundOff.SetActive(false);
