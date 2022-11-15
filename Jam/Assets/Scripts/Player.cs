@@ -92,7 +92,7 @@ public class Player : MonoBehaviour
         }
         if(other.CompareTag("Spawn Trigger"))
         { 
-        spawnManager.SpawnTriggerEntered();
+            spawnManager.SpawnTriggerEntered();
         }
         if (other.CompareTag("Obstacle"))
         {
