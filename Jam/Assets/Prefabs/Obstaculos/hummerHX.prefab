@@ -89,7 +89,7 @@ GameObject:
   - component: {fileID: 837297279766796498}
   m_Layer: 0
   m_Name: Muerte
-  m_TagString: Untagged
+  m_TagString: Obstaculo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

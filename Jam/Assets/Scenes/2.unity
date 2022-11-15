@@ -8331,7 +8331,6 @@ GameObject:
   - component: {fileID: 376642721}
   - component: {fileID: 376642720}
   - component: {fileID: 376642724}
-  - component: {fileID: 376642726}
   - component: {fileID: 376642725}
   - component: {fileID: 376642727}
   m_Layer: 0
@@ -8464,30 +8463,6 @@ MonoBehaviour:
   audioSource: {fileID: 1452613320}
   text: {fileID: 1227735769}
   spawnManager: {fileID: 100142848}
---- !u!114 &376642726
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 376642719}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 89472edb7f661da428d7494627001e85, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetPos: {x: 0, y: 0.65, z: 0}
-  z: {x: 0, y: 0, z: 0}
-  increment: 2.5
-  velocity: 0
-  target:
-  - {fileID: 0}
-  - {fileID: 0}
-  timeFeedback: 0.1
-  speed: 2
-  maxWidth: 2.000698
-  minWidth: -2.000698
-  isMoving: 0
 --- !u!65 &376642727
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9139,6 +9114,7 @@ MonoBehaviour:
   puntuaje: {fileID: 11400000, guid: a26879b301d82dc40936d06fc67dc98c, type: 2}
   moneda: {fileID: 0}
   moneda2: {fileID: 0}
+  player: {fileID: 0}
 --- !u!4 &413000676
 Transform:
   m_ObjectHideFlags: 0
@@ -16481,7 +16457,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1116720063}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -22532,8 +22508,8 @@ RectTransform:
   - {fileID: 250467572}
   - {fileID: 228211502}
   - {fileID: 247852155}
-  - {fileID: 1158389494}
   - {fileID: 822735481}
+  - {fileID: 1158389494}
   - {fileID: 339058362}
   m_Father: {fileID: 0}
   m_RootOrder: 9
@@ -23566,7 +23542,7 @@ RectTransform:
   m_LocalScale: {x: 0.1694605, y: 0.08049373, z: 0.1694605}
   m_Children: []
   m_Father: {fileID: 1116720063}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
@@ -24869,7 +24845,7 @@ GameObject:
   - component: {fileID: 1227735769}
   m_Layer: 5
   m_Name: Text
-  m_TagString: Text2
+  m_TagString: 2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -24907,7 +24883,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 15
+  m_Text: '0
+
+'
 --- !u!222 &1227735770
 CanvasRenderer:
   m_ObjectHideFlags: 0

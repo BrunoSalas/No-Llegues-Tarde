@@ -15,7 +15,6 @@ public class Player : MonoBehaviour
     public float impulseY;
     public bool left;
     public bool right;
-    public int puntuaje;
     public bool final;
     public bool perder;
     public AudioClip audio;
@@ -42,8 +41,6 @@ public class Player : MonoBehaviour
                 Move();
             }
         }
-
-        text.text = "" + puntuaje.ToString();
     }
 
     public void ButtonRightDown()

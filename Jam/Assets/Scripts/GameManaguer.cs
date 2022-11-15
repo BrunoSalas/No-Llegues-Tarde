@@ -8,12 +8,20 @@ public class GameManaguer : MonoBehaviour
     public coin puntuaje;
     public GameObject moneda;
     public GameObject moneda2;
+    public GameObject player;
+    public int a;
     public static GameManaguer gameManaguer;
 
     private void Start()
     {
+        if( a == 0)
+        {
+            puntuaje.puntuaje = 0;
+            a++;
+        }
         gameManaguer = this;
 
+        player = GameObject.FindGameObjectWithTag("Player");
         GameObject[] objs = GameObject.FindGameObjectsWithTag("Cerebro");
 
         if (objs.Length > 1)
@@ -22,23 +30,32 @@ public class GameManaguer : MonoBehaviour
         }
 
         DontDestroyOnLoad(this.gameObject);
-
     }
 
 
 
 // Update is called once per frame
-void Update()
+    void Update()
     {
-        if(moneda == null)
+        if(player == null)
         {
-            moneda = GameObject.FindGameObjectWithTag("Text");
+            player = GameObject.FindGameObjectWithTag("Player");    
         }
-        if (moneda2 == null)
+        if (player.GetComponent<Player>().perder == false)
         {
-            moneda2 = GameObject.FindGameObjectWithTag("Text2");
+            if (moneda == null)
+            {
+                moneda = GameObject.FindGameObjectWithTag("Text");
+            }
+            moneda.GetComponent<Text>().text = puntuaje.puntuaje.ToString();
         }
-        moneda.GetComponent<Text>().text = puntuaje.puntuaje.ToString();
-        moneda2.GetComponent<Text>().text = puntuaje.puntuaje.ToString();
+        if (player.GetComponent<Player>().perder == true)
+        {
+            if (moneda2 == null)
+            {
+                moneda2 = GameObject.FindGameObjectWithTag("2");
+            }
+            moneda2.GetComponent<Text>().text = puntuaje.puntuaje.ToString();
+        }
     }
 }
