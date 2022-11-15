@@ -15,7 +15,7 @@ public class Menu : MonoBehaviour
     public GameObject boton;
 
     private void FixedUpdate()
-    {/*
+    {
         if (player.GetComponent<Player>().perder)
         {
             pierde.SetActive(true);
@@ -27,7 +27,7 @@ public class Menu : MonoBehaviour
             ganar.SetActive(true);
             txt.SetActive(true);
             boton.SetActive(true);
-        }*/
+        }
     }
     public void Tutorial()
     {
@@ -37,7 +37,7 @@ public class Menu : MonoBehaviour
     public void Inicio()
     {
         instruciones.SetActive(false);
-        player.GetComponent<Player2>().velocity = 0.8f;
+        player.GetComponent<Player>().velocity = 0.8f;
         game.SetActive(true);
     }
 

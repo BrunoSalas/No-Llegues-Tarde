@@ -64,7 +64,6 @@ public class Player : MonoBehaviour
     {
 
         Vector3 direction = new Vector3(transform.position.x + sides, transform.position.y, transform.position.z + velocity);
-
         //transform.position = new Vector3(direction.x, transform.position.y, direction.y);
         rb.position = direction;
         //rb.AddForce(direction.x, transform.position.y, direction.y, ForceMode.Force);
@@ -89,9 +88,15 @@ public class Player : MonoBehaviour
         }
         if (other.CompareTag("Obstaculo"))
         {
-            perder = true;
+          perder = true;
         }
-
+        if(other.CompareTag("Spawn Trigger"))
+        { 
         spawnManager.SpawnTriggerEntered();
+        }
+        if (other.CompareTag("Obstacle"))
+        {
+            spawnManager.SpawnTriggerObstacle();
+        }
     }
 }

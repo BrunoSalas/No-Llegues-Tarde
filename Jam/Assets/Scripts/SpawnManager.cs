@@ -13,10 +13,15 @@ public class SpawnManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
     public void SpawnTriggerEntered()
     {
         roadSpawner.MoveRoad();
+        roadSpawner.Obstacule();
+    }
+    public void SpawnTriggerObstacle()
+    {
+        roadSpawner.Obstacule();
     }
 }

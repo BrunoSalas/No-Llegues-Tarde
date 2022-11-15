@@ -9,6 +9,7 @@ TagManager:
   - Final
   - Obstaculo
   - Spawn Trigger
+  - Obstacle
   layers:
   - Default
   - TransparentFX
