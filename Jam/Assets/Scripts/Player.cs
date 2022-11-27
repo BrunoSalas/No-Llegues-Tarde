@@ -21,9 +21,12 @@ public class Player : MonoBehaviour
     public AudioSource audioSource;
     public Text text;
 
+    public GameObject eje;
+    public float rotateSpeed;
+
+
     public SpawnManager spawnManager;
 
-    // Start is called before the first frame update
     void Start()
     {
 
@@ -41,6 +44,20 @@ public class Player : MonoBehaviour
                 Move();
             }
         }
+        //ROTACION, Bruno revisa esta mierda de acá abajo y lo mejoras si se te canta jaja asies
+        //Y has que cuando no presionas nada, rotes al medio
+        
+        if (right && eje.transform.rotation.eulerAngles.z > 90)
+        {
+            Debug.Log("rotando a derecha");
+            eje.transform.Rotate(Vector3.back * rotateSpeed * Time.deltaTime);
+        }
+        if (left && eje.transform.rotation.eulerAngles.z < 110)
+        {
+            eje.transform.Rotate(Vector3.forward * rotateSpeed * Time.deltaTime);
+            Debug.Log("rotando a izquierda");
+        }
+
     }
 
     public void ButtonRightDown()
