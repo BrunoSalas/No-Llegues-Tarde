@@ -17,7 +17,7 @@ public class Player : MonoBehaviour
     public bool right;
     public bool final;
     public bool perder;
-    public AudioClip audio;
+    public AudioClip audio, motoAvanzando, motoGirando;
     public AudioSource audioSource;
     public Text text;
 
@@ -44,6 +44,11 @@ public class Player : MonoBehaviour
                 Move();
             }
         }
+        if (perder)
+        {
+
+        }
+
         //ROTACION, Bruno revisa esta mierda de acá abajo y lo mejoras si se te canta jaja asies
         //Y has que cuando no presionas nada, rotes al medio
         
@@ -71,6 +76,7 @@ public class Player : MonoBehaviour
     public void ButtonRightDown()
     {
         right = true; sides = +x;
+        audioSource.PlayOneShot(motoGirando);
     }
     public void ButtonRightUp()
     {
@@ -79,6 +85,7 @@ public class Player : MonoBehaviour
     public void ButtonLeftDown()
     {
         left = true; sides =- x;
+        audioSource.PlayOneShot(motoGirando);
     }
     public void ButtonLefttUp()
     {
@@ -87,13 +94,11 @@ public class Player : MonoBehaviour
 
     public void Move()
     {
-
         Vector3 direction = new Vector3(transform.position.x + sides, transform.position.y, transform.position.z + velocity);
         //transform.position = new Vector3(direction.x, transform.position.y, direction.y);
         rb.position = direction;
         //rb.AddForce(direction.x, transform.position.y, direction.y, ForceMode.Force);
     }
-
 
     private void OnTriggerEnter(Collider other)
     {
