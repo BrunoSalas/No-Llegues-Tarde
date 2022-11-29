@@ -19,6 +19,8 @@ public class Player : MonoBehaviour
     public bool perder;
     public AudioClip audio, motoAvanzando, motoGirando;
     public AudioSource audioSource;
+    public GameObject moneda;
+    public GameObject r;
     public Text text;
 
     public GameObject eje;
@@ -109,8 +111,11 @@ public class Player : MonoBehaviour
         }
         if (other.CompareTag("Coin"))
         {
+            GameObject _ = Instantiate(moneda);
+            _.transform.position = r.transform.position;
             a.puntuaje += 2;
             audioSource.PlayOneShot(audio);
+            Destroy(_, 6f);
             Destroy(other.gameObject);
         }
         if (other.CompareTag("Final"))
