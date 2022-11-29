@@ -49,13 +49,21 @@ public class Player : MonoBehaviour
         
         if (right && eje.transform.rotation.eulerAngles.z > 90)
         {
-            Debug.Log("rotando a derecha");
+            //Debug.Log("rotando a derecha");
             eje.transform.Rotate(Vector3.back * rotateSpeed * Time.deltaTime);
         }
-        if (left && eje.transform.rotation.eulerAngles.z < 110)
+        if (left && eje.transform.rotation.eulerAngles.z < 109)
         {
             eje.transform.Rotate(Vector3.forward * rotateSpeed * Time.deltaTime);
-            Debug.Log("rotando a izquierda");
+            //Debug.Log("rotando a izquierda");
+        }
+        if(!left && eje.transform.rotation.eulerAngles.z <= 110  && eje.transform.rotation.eulerAngles.z > 100)
+        {
+            eje.transform.Rotate(Vector3.back * rotateSpeed * Time.deltaTime);
+        }
+        if (!right && eje.transform.rotation.eulerAngles.z >= 90 && eje.transform.rotation.eulerAngles.z < 100)
+        {
+            eje.transform.Rotate(Vector3.forward * rotateSpeed * Time.deltaTime);
         }
 
     }

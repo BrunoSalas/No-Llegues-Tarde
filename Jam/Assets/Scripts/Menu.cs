@@ -9,40 +9,40 @@ public class Menu : MonoBehaviour
     public GameObject menu;
     public GameObject instruciones;
     public GameObject player;
-    public GameObject ganar;
     public GameObject pierde;
+    public GameObject ranking;
+    public GameObject creditos;
     public GameObject txt;
     public GameObject boton;
     public GameObject soundOff;
+    public GameObject banner;
     public coin coin;
     public AudioSource audioSource;
     public AudioClip audio;
     private bool sound;
-    public Camera cam;
+    public GameObject cam;
+    public Animator animator;
+    bool ranki;
 
     private void Start()
     {
-        cam = Camera.FindObjectOfType<Camera>();
     }
 
     private void FixedUpdate()
     {
-        if (player.GetComponent<Player>().perder)
+        if (player.GetComponent<Player>().perder && !ranki)
         {
             pierde.SetActive(true);
             txt.SetActive(true);
             boton.SetActive(true);
-        }
-        if (player.GetComponent<Player>().final)
-        {
-            ganar.SetActive(true);
-            txt.SetActive(true);
-            boton.SetActive(true);
+            banner.SetActive(false);
         }
     }
     public void Tutorial()
     {
         audioSource.PlayOneShot(audio);
+        cam.GetComponent<Animator>().enabled = false;
+        cam.GetComponent<Cameras>().enabled = true;
         menu.SetActive(false);
         instruciones.SetActive(true);
     }
@@ -52,6 +52,24 @@ public class Menu : MonoBehaviour
         instruciones.SetActive(false);
         player.GetComponent<Player>().velocity = 0.8f;
         game.SetActive(true);
+    }
+    public void Ranking()
+    {
+        ranki = true;
+        banner.SetActive(false);
+        pierde.SetActive(false);
+        audioSource.PlayOneShot(audio);
+        menu.SetActive(false);
+        creditos.SetActive(false);
+        ranking.SetActive(true);
+    }
+    public void Creditos()
+    {
+        banner.SetActive(false);
+        audioSource.PlayOneShot(audio);
+        menu.SetActive(false);
+        creditos.SetActive(true);
+
     }
 
     public void Salir()
