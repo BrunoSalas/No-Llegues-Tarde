@@ -115,7 +115,7 @@ public class Player : MonoBehaviour
             _.transform.position = r.transform.position;
             a.puntuaje += 2;
             audioSource.PlayOneShot(audio);
-            Destroy(_, 6f);
+            Destroy(_, 2f);
             Destroy(other.gameObject);
         }
         if (other.CompareTag("Final"))
