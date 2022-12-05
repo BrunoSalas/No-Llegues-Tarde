@@ -16,6 +16,7 @@ public class Player : MonoBehaviour
     public bool left;
     public bool right;
     public bool final;
+    public bool teChocaste;
     public bool perder;
     public AudioClip audio, motoAvanzando, motoGirando;
     public AudioSource audioSource;
@@ -39,16 +40,16 @@ public class Player : MonoBehaviour
   
     private void FixedUpdate()
     {
-        if (!perder)
+        if (!teChocaste)
         {
             if (!final)
             {
                 Move();
             }
         }
-        if (perder)
+        if (teChocaste)
         {
-
+            StartCoroutine(Perdiste());
         }
 
         //ROTACION, Bruno revisa esta mierda de acá abajo y lo mejoras si se te canta jaja asies
@@ -124,7 +125,7 @@ public class Player : MonoBehaviour
         }
         if (other.CompareTag("Obstaculo"))
         {
-          perder = true;
+          teChocaste = true;
         }
         if(other.CompareTag("Spawn Trigger"))
         { 
@@ -135,5 +136,16 @@ public class Player : MonoBehaviour
             Debug.Log(other.gameObject.name);
             spawnManager.SpawnTriggerObstacle();
         }
+    }
+
+    IEnumerator Perdiste()
+    {
+        Debug.Log("Uy te chocaste xdddd");
+        //Sonido de chocarse, el sonido está en el proyecto
+        //Particulas de humo, también puedes ocultar el modelado al momento que salgan las particulas
+        //Que las particulas se extiendan rápido, duren más de 2 segundos, que parezca que tapan al modelado, como caricatura
+        yield return new WaitForSeconds(2);
+        perder = true;
+
     }
 }
