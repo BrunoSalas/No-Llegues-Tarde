@@ -35,7 +35,8 @@ public class Menu : MonoBehaviour
             pierde.SetActive(true);
             txt.SetActive(true);
             boton.SetActive(true);
-            banner.SetActive(false);
+            banner.SetActive(false); 
+            soundOff.SetActive(false);
         }
     }
     public void Tutorial()

@@ -30,12 +30,19 @@ public class Player : MonoBehaviour
     public GameObject eje;
     public float rotateSpeed;
     bool perderUnaVez;
+    public enum states
+    {
+        Vivo,
+        Muerto
+    }
 
+    public states state;
 
     public SpawnManager spawnManager;
 
     void Start()
     {
+        state = states.Vivo;
         perderUnaVez = false;
         rb = GetComponent<Rigidbody>();
     }
@@ -61,7 +68,7 @@ public class Player : MonoBehaviour
 
         //ROTACION, Bruno revisa esta mierda de acá abajo y lo mejoras si se te canta jaja asies
         //Y has que cuando no presionas nada, rotes al medio
-        
+       
         if (right && eje.transform.rotation.eulerAngles.z > 90)
         {
             //Debug.Log("rotando a derecha");
@@ -72,34 +79,47 @@ public class Player : MonoBehaviour
             eje.transform.Rotate(Vector3.forward * rotateSpeed * Time.deltaTime);
             //Debug.Log("rotando a izquierda");
         }
-        if(!left && eje.transform.rotation.eulerAngles.z <= 110  && eje.transform.rotation.eulerAngles.z > 100)
+        if (!left && eje.transform.rotation.eulerAngles.z <= 110 && eje.transform.rotation.eulerAngles.z > 100)
         {
             eje.transform.Rotate(Vector3.back * rotateSpeed * Time.deltaTime);
+
         }
-        if (!right && eje.transform.rotation.eulerAngles.z >= 90 && eje.transform.rotation.eulerAngles.z < 100)
+        if (!right && eje.transform.rotation.eulerAngles.z >= 89 && eje.transform.rotation.eulerAngles.z < 100)
         {
             eje.transform.Rotate(Vector3.forward * rotateSpeed * Time.deltaTime);
         }
-
+        
     }
 
     public void ButtonRightDown()
     {
-        right = true; sides = +x;
-        audioSource.PlayOneShot(motoGirando);
+        if (state != states.Muerto)
+        {
+            right = true; sides = +x;
+            audioSource.PlayOneShot(motoGirando);
+        }
     }
     public void ButtonRightUp()
     {
-        right = false; sides = 0;
+        if (state != states.Muerto)
+        {
+            right = false; sides = 0;
+        }
     }
     public void ButtonLeftDown()
     {
-        left = true; sides =- x;
+        if (state != states.Muerto)
+        {
+            left = true; sides =- x;
         audioSource.PlayOneShot(motoGirando);
+        }
     }
     public void ButtonLefttUp()
     {
-        left = false; sides = 0;
+        if (state != states.Muerto)
+        {
+            left = false; sides = 0;
+        }
     }
 
     public void Move()
@@ -147,6 +167,7 @@ public class Player : MonoBehaviour
 
     IEnumerator Perdiste()
     {
+        state = states.Muerto;
         Debug.Log("Uy te chocaste xdddd");
         GameObject _ = Instantiate(humo);
         _.transform.position = h.transform.position;

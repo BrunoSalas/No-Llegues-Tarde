@@ -15,10 +15,13 @@ public class RoadSpawner : MonoBehaviour
     public bool spawnObstacles;
     void Start()
     {
+        //130
+
         if(roads != null && roads.Count > 0)
         {
             roads = roads.OrderBy(r => r.transform.position.z).ToList();
         }
+        FirstObstacule();
         Obstacule();
     }
     private void Update()
@@ -44,6 +47,20 @@ public class RoadSpawner : MonoBehaviour
             Instantiate(obstacle, new Vector3(0, 0, z), obstacle.transform.rotation);
             spawnObstacles = false;
         }
+    }
+    public void FirstObstacule()
+    {
+        float z;
+        z = 100f + player.position.z;
+        Debug.Log(z);
+
+        GameObject obstacle = obstacles[Random.Range(0, obstacles.Count)];
+        /*GameObject obstacle = obstacles[0];Debug.Log(obstacle);
+        obstacles.Remove(obstacle);
+        float newZ = obstacles[obstacles.Count - 1].transform.position.z + offset;
+        obstacle.transform.position = new Vector3(0, 0, newZ); Debug.Log(obstacle.transform.position);
+        obstacles.Add(obstacle);*/
+        Instantiate(obstacle, new Vector3(0, 0, z), obstacle.transform.rotation);
     }
 
 
