@@ -18,21 +18,25 @@ public class Player : MonoBehaviour
     public bool final;
     public bool teChocaste;
     public bool perder;
-    public AudioClip audio, motoAvanzando, motoGirando;
+    public AudioClip audio, motoAvanzando, motoGirando,choque;
     public AudioSource audioSource;
+    public AudioSource audioChoque;
     public GameObject moneda;
-    public GameObject r;
+    public GameObject humo;
+    public GameObject h;
+    public GameObject m;
     public Text text;
 
     public GameObject eje;
     public float rotateSpeed;
+    bool perderUnaVez;
 
 
     public SpawnManager spawnManager;
 
     void Start()
     {
-
+        perderUnaVez = false;
         rb = GetComponent<Rigidbody>();
     }
 
@@ -49,7 +53,10 @@ public class Player : MonoBehaviour
         }
         if (teChocaste)
         {
-            StartCoroutine(Perdiste());
+            if (!perderUnaVez)
+            {
+                StartCoroutine(Perdiste());
+            }
         }
 
         //ROTACION, Bruno revisa esta mierda de acá abajo y lo mejoras si se te canta jaja asies
@@ -113,7 +120,7 @@ public class Player : MonoBehaviour
         if (other.CompareTag("Coin"))
         {
             GameObject _ = Instantiate(moneda);
-            _.transform.position = r.transform.position;
+            _.transform.position = m.transform.position;
             a.puntuaje += 2;
             audioSource.PlayOneShot(audio);
             Destroy(_, 2f);
@@ -141,10 +148,14 @@ public class Player : MonoBehaviour
     IEnumerator Perdiste()
     {
         Debug.Log("Uy te chocaste xdddd");
-        //Sonido de chocarse, el sonido está en el proyecto
-        //Particulas de humo, también puedes ocultar el modelado al momento que salgan las particulas
-        //Que las particulas se extiendan rápido, duren más de 2 segundos, que parezca que tapan al modelado, como caricatura
-        yield return new WaitForSeconds(2);
+        GameObject _ = Instantiate(humo);
+        _.transform.position = h.transform.position;
+        audioChoque.PlayOneShot(choque);
+        perderUnaVez = true;
+         //Sonido de chocarse, el sonido está en el proyecto
+         //Particulas de humo, también puedes ocultar el modelado al momento que salgan las particulas
+         //Que las particulas se extiendan rápido, duren más de 2 segundos, que parezca que tapan al modelado, como caricatura
+         yield return new WaitForSeconds(1);
         perder = true;
 
     }

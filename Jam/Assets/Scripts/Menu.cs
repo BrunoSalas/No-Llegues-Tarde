@@ -89,15 +89,17 @@ public class Menu : MonoBehaviour
         sound = !sound;
         if (sound)
         {
+            Debug.Log("SI");
             soundOff.SetActive(true);
             audioSource.PlayOneShot(audio);
             cam.GetComponent<Camera>().GetComponent<AudioListener>().enabled = false;
         }
         else
         {
+            Debug.Log("NO");
+            soundOff.SetActive(false);
             audioSource.PlayOneShot(audio);
             cam.GetComponent<Camera>().GetComponent<AudioListener>().enabled = true;
-            soundOff.SetActive(false);
         }
     }
 }
