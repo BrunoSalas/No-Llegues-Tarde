@@ -25,6 +25,7 @@ public class Player : MonoBehaviour
     public GameObject humo;
     public GameObject h;
     public GameObject m;
+    public GameObject idle;
     public Text text;
 
     public GameObject eje;
@@ -88,7 +89,15 @@ public class Player : MonoBehaviour
         {
             eje.transform.Rotate(Vector3.forward * rotateSpeed * Time.deltaTime);
         }
-        
+
+        if (!right && !left && velocity != 0)
+        {
+            idle.SetActive(true);
+        }
+        else
+        {
+            idle.SetActive(false);
+        }
     }
 
     public void ButtonRightDown()
