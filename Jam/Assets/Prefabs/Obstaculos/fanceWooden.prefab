@@ -9,9 +9,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2481412005129965465}
-  m_Layer: 0
+  - component: {fileID: 7146135833571571143}
+  - component: {fileID: 6492015827965927653}
+  m_Layer: 10
   m_Name: fanceWooden
-  m_TagString: Untagged
+  m_TagString: Obstaculo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -32,6 +34,32 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+--- !u!65 &7146135833571571143
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2964617319933351203}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.4813733, y: 2.3421824, z: 0.20098326}
+  m_Center: {x: -0.013624937, y: 1.2853109, z: 0.014474123}
+--- !u!65 &6492015827965927653
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2964617319933351203}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.4813733, y: 2.3421824, z: 0.20098326}
+  m_Center: {x: -0.013624937, y: 1.2853109, z: 0.014474123}
 --- !u!1 &5770557296400024562
 GameObject:
   m_ObjectHideFlags: 0
@@ -41,8 +69,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3790899968079366491}
-  - component: {fileID: 6998451386342660214}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Muerte
   m_TagString: Obstaculo
   m_Icon: {fileID: 0}
@@ -63,19 +90,6 @@ Transform:
   m_Father: {fileID: 2481412005129965465}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &6998451386342660214
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5770557296400024562}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 2.4813733, y: 2.3421824, z: 0.20098326}
-  m_Center: {x: -0.013624937, y: 1.2853109, z: 0.014474123}
 --- !u!1 &6014031776318626790
 GameObject:
   m_ObjectHideFlags: 0
@@ -87,7 +101,7 @@ GameObject:
   - component: {fileID: 3814942822068562654}
   - component: {fileID: 3527123566016792823}
   - component: {fileID: 4922801855013446352}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: (null)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

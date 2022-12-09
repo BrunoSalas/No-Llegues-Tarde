@@ -13,6 +13,10 @@ TagManager:
   - Cerebro
   - Text
   - 2
+  - Destructor
+  - TextInvul
+  - TextVelo
+  - TextoDestru
   layers:
   - Default
   - TransparentFX
@@ -24,7 +28,7 @@ TagManager:
   - Estructura
   - Obstacle
   - Coin
-  - 
+  - Destruible
   - 
   - 
   - 

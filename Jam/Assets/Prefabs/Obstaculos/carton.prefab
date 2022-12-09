@@ -9,8 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2663172387927289759}
-  - component: {fileID: 1880271517036924060}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Muerte
   m_TagString: Obstaculo
   m_Icon: {fileID: 0}
@@ -31,19 +30,6 @@ Transform:
   m_Father: {fileID: 3336583129838772107}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 91.312, z: 0}
---- !u!65 &1880271517036924060
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1736001769843721906}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2667885804846155057
 GameObject:
   m_ObjectHideFlags: 0
@@ -53,9 +39,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3336583129838772107}
-  m_Layer: 0
+  - component: {fileID: 2040817213746724046}
+  - component: {fileID: 5164426482811311413}
+  m_Layer: 10
   m_Name: carton
-  m_TagString: Untagged
+  m_TagString: Obstaculo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -76,6 +64,32 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &2040817213746724046
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2667885804846155057}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0.45, z: 0}
+--- !u!65 &5164426482811311413
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2667885804846155057}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0.45, z: 0}
 --- !u!1 &6869240360390003700
 GameObject:
   m_ObjectHideFlags: 0
@@ -87,7 +101,7 @@ GameObject:
   - component: {fileID: 4094675821877410508}
   - component: {fileID: 4382160277310249189}
   - component: {fileID: 5220548878323249858}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: (null)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -51,7 +51,8 @@ public class Menu : MonoBehaviour
     {
         audioSource.PlayOneShot(audio);
         instruciones.SetActive(false);
-        player.GetComponent<Player>().velocity = 0.8f;
+        player.GetComponent<Player>().init = true;
+        player.GetComponent<Player>().velocity = 0.7f;
         game.SetActive(true);
     }
     public void Ranking()

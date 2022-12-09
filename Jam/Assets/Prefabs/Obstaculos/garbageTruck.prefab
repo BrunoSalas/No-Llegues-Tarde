@@ -9,9 +9,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 289340924506260367}
-  m_Layer: 0
+  - component: {fileID: 6502632271549588111}
+  - component: {fileID: 7075884855704304428}
+  m_Layer: 10
   m_Name: garbageTruck
-  m_TagString: Untagged
+  m_TagString: Obstaculo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -33,6 +35,32 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &6502632271549588111
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1101168201672005941}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 12.06, y: 5.03, z: 4.4}
+  m_Center: {x: 0.32, y: 2.58, z: 0}
+--- !u!65 &7075884855704304428
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1101168201672005941}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 12.06, y: 5.03, z: 4.4}
+  m_Center: {x: 0.32, y: 2.58, z: 0}
 --- !u!1 &4180963481326527535
 GameObject:
   m_ObjectHideFlags: 0
@@ -42,8 +70,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2114050238055991837}
-  - component: {fileID: 3465711771780287502}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Techo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -64,19 +91,6 @@ Transform:
   m_Father: {fileID: 289340924506260367}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &3465711771780287502
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4180963481326527535}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 10.99, y: 1, z: 4.4}
-  m_Center: {x: 0, y: 2.58, z: 0}
 --- !u!1 &6145268352188818873
 GameObject:
   m_ObjectHideFlags: 0
@@ -86,8 +100,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6121417587239950895}
-  - component: {fileID: 9192460847779761097}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Muerte
   m_TagString: Obstaculo
   m_Icon: {fileID: 0}
@@ -108,19 +121,6 @@ Transform:
   m_Father: {fileID: 289340924506260367}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &9192460847779761097
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6145268352188818873}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 11, y: 4.5, z: 4.07139}
-  m_Center: {x: 0, y: 0, z: 0.018163681}
 --- !u!1 &8438178977287673840
 GameObject:
   m_ObjectHideFlags: 0
@@ -133,7 +133,7 @@ GameObject:
   - component: {fileID: 1629899724667716833}
   - component: {fileID: 7078817692256399046}
   - component: {fileID: 4819616068337954162}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: (null)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

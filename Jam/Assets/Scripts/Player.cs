@@ -8,17 +8,35 @@ public class Player : MonoBehaviour
 {
     public coin a;
     public Rigidbody rb;
+    private float metrosTime;
+    public float metrosLon;
+    public static int metros;
+    private float timeVelocity;
+    public float timeMaxVelocity;
     public float velocity;
+    public float acelerate;
     public float x;
-    public float sides;
-    public float impulseZ;
-    public float impulseY;
-    public bool left;
-    public bool right;
-    public bool final;
-    public bool teChocaste;
+    public float xAcelerate;
+
+    private float timeInvulnerable;
+    [SerializeField]
+    private float timeMaxInvulnerable;
+    private float timeDestru;
+    [SerializeField]
+    private float timeMaxDestru;
+    [SerializeField]
+    private float sides;
+    [HideInInspector]
+    public bool init;
+    public bool invulnerable;
+    public bool colliderDestruir;
+    private bool left;
+    private bool right;
+    private bool final;
+    private bool teChocaste = false;
+    [HideInInspector]
     public bool perder;
-    public AudioClip audio, motoAvanzando, motoGirando,choque;
+    public AudioClip audio, motoAvanzando, motoGirando, choque;
     public AudioSource audioSource;
     public AudioSource audioChoque;
     public GameObject moneda;
@@ -27,9 +45,11 @@ public class Player : MonoBehaviour
     public GameObject m;
     public GameObject idle;
     public Text text;
-
+    public Text textMetros;
+    public LayerMask destruir;
+    RaycastHit hit;
     public GameObject eje;
-    public float rotateSpeed;
+    private float rotateSpeed;
     bool perderUnaVez;
     public enum states
     {
@@ -44,12 +64,13 @@ public class Player : MonoBehaviour
     void Start()
     {
         state = states.Vivo;
+        metros = 0;
         perderUnaVez = false;
         rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
-  
+
     private void FixedUpdate()
     {
         if (!teChocaste)
@@ -67,39 +88,91 @@ public class Player : MonoBehaviour
             }
         }
 
-        //ROTACION, Bruno revisa esta mierda de acá abajo y lo mejoras si se te canta jaja asies
-        //Y has que cuando no presionas nada, rotes al medio
-       
-        if (right && eje.transform.rotation.eulerAngles.z > 90)
+        if (init && !teChocaste)
         {
-            //Debug.Log("rotando a derecha");
-            eje.transform.Rotate(Vector3.back * rotateSpeed * Time.deltaTime);
-        }
-        if (left && eje.transform.rotation.eulerAngles.z < 109)
-        {
-            eje.transform.Rotate(Vector3.forward * rotateSpeed * Time.deltaTime);
-            //Debug.Log("rotando a izquierda");
-        }
-        if (!left && eje.transform.rotation.eulerAngles.z <= 110 && eje.transform.rotation.eulerAngles.z > 100)
-        {
-            eje.transform.Rotate(Vector3.back * rotateSpeed * Time.deltaTime);
+            #region metros
+            metrosTime += Time.deltaTime;
 
-        }
-        if (!right && eje.transform.rotation.eulerAngles.z >= 89 && eje.transform.rotation.eulerAngles.z < 100)
-        {
-            eje.transform.Rotate(Vector3.forward * rotateSpeed * Time.deltaTime);
-        }
+            textMetros.text = metros.ToString();
 
-        if (!right && !left && velocity != 0)
-        {
-            idle.SetActive(true);
+            if (metrosTime >= metrosLon)
+            {
+                metros += 1;
+                metrosTime = 0;
+            }
+            #endregion
+            #region aumento de velocidad
+            if (velocity != 1.1)
+            {
+                timeVelocity += Time.deltaTime;
+            }
+            if (timeVelocity > timeMaxVelocity && velocity < 1.1)
+            {
+                velocity += acelerate;
+                x += xAcelerate;
+                timeVelocity = 0;
+            }
+            #endregion
+            #region rotar
+            if (right && eje.transform.rotation.eulerAngles.z > 90)
+            {
+                //Debug.Log("rotando a derecha");
+                eje.transform.Rotate(Vector3.back * rotateSpeed * Time.deltaTime);
+            }
+            if (left && eje.transform.rotation.eulerAngles.z < 109)
+            {
+                eje.transform.Rotate(Vector3.forward * rotateSpeed * Time.deltaTime);
+                //Debug.Log("rotando a izquierda");
+            }
+            if (!left && eje.transform.rotation.eulerAngles.z <= 110 && eje.transform.rotation.eulerAngles.z > 100)
+            {
+                eje.transform.Rotate(Vector3.back * rotateSpeed * Time.deltaTime);
+
+            }
+            if (!right && eje.transform.rotation.eulerAngles.z >= 89 && eje.transform.rotation.eulerAngles.z < 100)
+            {
+                eje.transform.Rotate(Vector3.forward * rotateSpeed * Time.deltaTime);
+            }
+
+            if (!right && !left && velocity != 0)
+            {
+                idle.SetActive(true);
+            }
+            else
+            {
+                idle.SetActive(false);
+            }
+            #endregion
+            #region power ups
+            if (invulnerable)
+            {
+                timeInvulnerable += Time.deltaTime;
+                if (timeInvulnerable >= timeMaxInvulnerable)
+                {
+                    invulnerable = false;
+                    rb.isKinematic = false;
+                    timeInvulnerable = 0;
+                }
+            }
+            if (colliderDestruir)
+            {
+                timeDestru += Time.deltaTime;
+                if(timeDestru >= timeMaxDestru)
+                {
+                    colliderDestruir = false;
+                }
+                if (Physics.Raycast(transform.position, transform.forward, out hit, 10f,destruir))
+                {
+                    Destroy(hit.collider.gameObject);
+                }
+            }
+            #endregion
         }
         else
         {
             idle.SetActive(false);
         }
     }
-
     public void ButtonRightDown()
     {
         if (state != states.Muerto)
@@ -119,8 +192,8 @@ public class Player : MonoBehaviour
     {
         if (state != states.Muerto)
         {
-            left = true; sides =- x;
-        audioSource.PlayOneShot(motoGirando);
+            left = true; sides = -x;
+            audioSource.PlayOneShot(motoGirando);
         }
     }
     public void ButtonLefttUp()
@@ -131,21 +204,27 @@ public class Player : MonoBehaviour
         }
     }
 
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.black;
+        Gizmos.DrawRay(transform.position, transform.forward * 10f);
+    }
+
     public void Move()
     {
-        Vector3 direction = new Vector3(transform.position.x + sides, transform.position.y, transform.position.z + velocity);
+        float hor = Mathf.Clamp(transform.position.x + sides, -4.27f, 4.27f); // nota esto hace que no pase de izquierda a derecha siin collideer eficiente
+        Vector3 direction = new Vector3(hor, transform.position.y, transform.position.z + velocity);
         //transform.position = new Vector3(direction.x, transform.position.y, direction.y);
         rb.position = direction;
         //rb.AddForce(direction.x, transform.position.y, direction.y, ForceMode.Force);
     }
-
     private void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("Impulsores"))
-        {
-            Debug.Log("ds");
-            rb.AddForce(transform.position.x, transform.position.y + impulseY, transform.position.z * impulseZ, ForceMode.Impulse);
-        }
+        //if(other.CompareTag("Impulsores"))
+        //{
+        //    Debug.Log("ds");
+        //    rb.AddForce(transform.position.x, transform.position.y + impulseY, transform.position.z * impulseZ, ForceMode.Impulse);
+        //}
         if (other.CompareTag("Coin"))
         {
             GameObject _ = Instantiate(moneda);
@@ -155,16 +234,19 @@ public class Player : MonoBehaviour
             Destroy(_, 2f);
             Destroy(other.gameObject);
         }
-        if (other.CompareTag("Final"))
-        {
-            final = true;
-        }
+        //if (other.CompareTag("Final"))
+        //{
+        //    final = true;
+        //}
         if (other.CompareTag("Obstaculo"))
         {
-          teChocaste = true;
+            if (!invulnerable)
+            {
+                teChocaste = true;
+            }
         }
-        if(other.CompareTag("Spawn Trigger"))
-        { 
+        if (other.CompareTag("Spawn Trigger"))
+        {
             spawnManager.SpawnTriggerEntered();
         }
         if (other.CompareTag("Obstacle"))
@@ -174,6 +256,10 @@ public class Player : MonoBehaviour
         }
     }
 
+    private void OnTriggerExit(Collider other)
+    {
+    }
+   
     IEnumerator Perdiste()
     {
         state = states.Muerto;

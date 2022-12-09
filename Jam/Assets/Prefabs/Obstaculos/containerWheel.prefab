@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7327611175154810351}
   - component: {fileID: 1230456368426260424}
   - component: {fileID: 2630226115646880548}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: (null)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -106,8 +106,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8221960660963890032}
-  - component: {fileID: 4685971252974458305}
-  m_Layer: 0
+  - component: {fileID: 2351772840770478672}
+  m_Layer: 10
   m_Name: Muerte
   m_TagString: Obstaculo
   m_Icon: {fileID: 0}
@@ -128,19 +128,19 @@ Transform:
   m_Father: {fileID: 8587665930534173313}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &4685971252974458305
-BoxCollider:
+--- !u!114 &2351772840770478672
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3036634355492973715}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 4.3, y: 5.03, z: 10.5}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed2d7efc130c62b48942b00ec5a54436, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  padre: {fileID: 8963944495448514619}
 --- !u!1 &6425291192315729549
 GameObject:
   m_ObjectHideFlags: 0
@@ -150,8 +150,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 451842502229416776}
-  - component: {fileID: 2280863868146230365}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Techo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -172,19 +171,6 @@ Transform:
   m_Father: {fileID: 8587665930534173313}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &2280863868146230365
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6425291192315729549}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 4.01, y: 1, z: 9.98}
-  m_Center: {x: 0, y: 2.77, z: 0}
 --- !u!1 &8963944495448514619
 GameObject:
   m_ObjectHideFlags: 0
@@ -194,9 +180,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8587665930534173313}
-  m_Layer: 0
+  - component: {fileID: 1054711966878590478}
+  - component: {fileID: 5738133658242182325}
+  m_Layer: 10
   m_Name: containerWheel
-  m_TagString: Untagged
+  m_TagString: Obstaculo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -218,3 +206,29 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1054711966878590478
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8963944495448514619}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4.01, y: 6.63, z: 10.55}
+  m_Center: {x: 0.21, y: 2.77, z: 0}
+--- !u!65 &5738133658242182325
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8963944495448514619}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4.01, y: 6.63, z: 10.55}
+  m_Center: {x: 0.21, y: 2.77, z: 0}

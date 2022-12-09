@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6295596841793746461}
   - component: {fileID: 2593477444573666362}
   - component: {fileID: 7059670012859559449}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: (null)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -106,8 +106,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8925518765487098411}
-  - component: {fileID: 7274218104554169772}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Techo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -128,19 +127,6 @@ Transform:
   m_Father: {fileID: 5026880131395858803}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &7274218104554169772
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5050749199542720143}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 6.2, y: 1, z: 3}
-  m_Center: {x: 0, y: 1.28, z: 0}
 --- !u!1 &5658984536422345673
 GameObject:
   m_ObjectHideFlags: 0
@@ -150,9 +136,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5026880131395858803}
-  m_Layer: 0
+  - component: {fileID: 6663306637920143248}
+  - component: {fileID: 6888744560658125447}
+  m_Layer: 10
   m_Name: rangeRover
-  m_TagString: Untagged
+  m_TagString: Obstaculo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -174,6 +162,32 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &6663306637920143248
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5658984536422345673}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 6.79, y: 2, z: 2.79}
+  m_Center: {x: 0, y: 0.8, z: -0.03347659}
+--- !u!65 &6888744560658125447
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5658984536422345673}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 6.79, y: 2, z: 2.79}
+  m_Center: {x: 0, y: 0.8, z: -0.03347659}
 --- !u!1 &8348197616775633828
 GameObject:
   m_ObjectHideFlags: 0
@@ -183,8 +197,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4350036792199421753}
-  - component: {fileID: 1990045289003472585}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Muerte
   m_TagString: Obstaculo
   m_Icon: {fileID: 0}
@@ -205,16 +218,3 @@ Transform:
   m_Father: {fileID: 5026880131395858803}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &1990045289003472585
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8348197616775633828}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 6.7, y: 2, z: 2.665234}
-  m_Center: {x: 0, y: 0, z: -0.03347659}
