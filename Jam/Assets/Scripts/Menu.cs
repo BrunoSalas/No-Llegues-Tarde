@@ -10,7 +10,6 @@ public class Menu : MonoBehaviour
     public GameObject instruciones;
     public GameObject player;
     public GameObject pierde;
-    public GameObject ranking;
     public GameObject creditos;
     public GameObject txt;
     public GameObject boton;
@@ -33,6 +32,7 @@ public class Menu : MonoBehaviour
         if (player.GetComponent<Player>().perder && !ranki)
         {
             pierde.SetActive(true);
+            game.SetActive(false);
             txt.SetActive(true);
             boton.SetActive(true);
             banner.SetActive(false); 
@@ -54,16 +54,6 @@ public class Menu : MonoBehaviour
         player.GetComponent<Player>().init = true;
         player.GetComponent<Player>().velocity = 0.7f;
         game.SetActive(true);
-    }
-    public void Ranking()
-    {
-        ranki = true;
-        banner.SetActive(false);
-        pierde.SetActive(false);
-        audioSource.PlayOneShot(audio);
-        menu.SetActive(false);
-        creditos.SetActive(false);
-        ranking.SetActive(true);
     }
     public void Creditos()
     {

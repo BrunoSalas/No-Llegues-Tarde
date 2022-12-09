@@ -13,6 +13,8 @@ public class Player : MonoBehaviour
     public static int metros;
     private float timeVelocity;
     public float timeMaxVelocity;
+    private float timeVelocityCould;
+    public float timeMaxVelocityCould;
     public float velocity;
     public float acelerate;
     public float x;
@@ -27,6 +29,7 @@ public class Player : MonoBehaviour
     private float sides;
     [HideInInspector]
     public bool init;
+    public bool velocityCould;
     public bool invulnerable;
     public bool colliderDestruir;
     private bool left;
@@ -92,7 +95,7 @@ public class Player : MonoBehaviour
             #region metros
             metrosTime += Time.deltaTime;
 
-            textMetros.text = metros.ToString();
+            textMetros.text = metros.ToString() + "  " + "M";
 
             if (metrosTime >= metrosLon)
             {
@@ -101,15 +104,31 @@ public class Player : MonoBehaviour
             }
             #endregion
             #region aumento de velocidad
-            if (velocity != 1.1)
+            if (!velocityCould)
             {
-                timeVelocity += Time.deltaTime;
+                if (velocity != 1.1)
+                {
+                    timeVelocity += Time.deltaTime;
+                }
+                if (timeVelocity > timeMaxVelocity && velocity < 1.1)
+                {
+                    velocity += acelerate;
+                    x += xAcelerate;
+                    timeVelocity = 0;
+                }
             }
-            if (timeVelocity > timeMaxVelocity && velocity < 1.1)
+            else
             {
-                velocity += acelerate;
-                x += xAcelerate;
-                timeVelocity = 0;
+                timeVelocityCould += Time.deltaTime;
+
+                velocity = 0.7f;
+                x = 0.2f;
+                if (timeVelocityCould > timeMaxVelocityCould)
+                {
+                    velocityCould = false;
+                    timeVelocity = 0;
+                }
+
             }
             #endregion
             #region rotar
@@ -159,6 +178,7 @@ public class Player : MonoBehaviour
                 if(timeDestru >= timeMaxDestru)
                 {
                     colliderDestruir = false;
+                    timeDestru = 0;
                 }
                 if (Physics.Raycast(transform.position, transform.forward, out hit, 10f,destruir))
                 {
@@ -232,7 +252,7 @@ public class Player : MonoBehaviour
     public void Move()
     {
         float hor = Mathf.Clamp(transform.position.x + sides, -4.27f, 4.27f); // nota esto hace que no pase de izquierda a derecha siin collideer eficiente
-        Vector3 direction = new Vector3(hor, transform.position.y, transform.position.z + velocity);
+        Vector3 direction = new Vector3(hor, 0.57f, transform.position.z + velocity);
         //transform.position = new Vector3(direction.x, transform.position.y, direction.y);
         rb.position = direction;
         //rb.AddForce(direction.x, transform.position.y, direction.y, ForceMode.Force);

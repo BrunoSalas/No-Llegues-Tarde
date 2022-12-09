@@ -21,4 +21,12 @@ public class Destruir : MonoBehaviour
             Destroy(obstaculo);
         }
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.CompareTag("Player"))
+        {
+            paso = true;
+        }
+    }
 }

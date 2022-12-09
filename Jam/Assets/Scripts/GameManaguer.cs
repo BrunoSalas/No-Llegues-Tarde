@@ -85,7 +85,7 @@ public class GameManaguer : MonoBehaviour
             {
                 moneda2 = GameObject.FindGameObjectWithTag("2");
             }
-            moneda2.GetComponent<Text>().text = Player.metros.ToString();
+            moneda2.GetComponent<Text>().text = Player.metros.ToString() + "  " + "M";
         }
         if (puntuaje.puntuaje < costeVelocidad)
         {
@@ -120,6 +120,7 @@ public class GameManaguer : MonoBehaviour
         {
             player.GetComponent<Player>().velocity = 0.7f;
             player.GetComponent<Player>().x = 0.2f;
+            player.GetComponent<Player>().velocityCould = true;
             puntuaje.puntuaje -= costeVelocidad;
             costeVelocidad += costeVelocidad;
         }
