@@ -17,7 +17,6 @@ public class Player : MonoBehaviour
     public float acelerate;
     public float x;
     public float xAcelerate;
-
     private float timeInvulnerable;
     [SerializeField]
     private float timeMaxInvulnerable;
