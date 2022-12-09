@@ -4,13 +4,21 @@ using UnityEngine;
 
 public class Destruir : MonoBehaviour
 {
-    public GameObject padre;
-    private void OnTriggerEnter(Collider other)
+    public float destroid = 2;
+    public float time;
+    public GameObject obstaculo;
+    bool paso;
+
+
+    private void Update()
     {
-        if(other.gameObject.CompareTag("Destructor"))
+        if (paso)
         {
-            Debug.Log("WWWWWW");
-            Destroy(padre);
+            time += Time.deltaTime;
+        }
+        if (time >= destroid)
+        {
+            Destroy(obstaculo);
         }
     }
 }

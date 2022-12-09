@@ -26,12 +26,6 @@ public class GameManaguer : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         GameObject[] objs = GameObject.FindGameObjectsWithTag("Cerebro");
 
-        if (objs.Length > 1)
-        {
-            Destroy(this.gameObject);
-        }
-
-        DontDestroyOnLoad(this.gameObject);
     }
 
 

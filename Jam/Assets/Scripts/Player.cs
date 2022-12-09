@@ -49,7 +49,7 @@ public class Player : MonoBehaviour
     public LayerMask destruir;
     RaycastHit hit;
     public GameObject eje;
-    private float rotateSpeed;
+    public float rotateSpeed;
     bool perderUnaVez;
     public enum states
     {
@@ -165,6 +165,22 @@ public class Player : MonoBehaviour
                 {
                     Destroy(hit.collider.gameObject);
                 }
+                if (Physics.Raycast(transform.position, new Vector3(transform.right.x, 0, transform.forward.z), out hit, 10f, destruir))
+                {
+                    Destroy(hit.collider.gameObject);
+                }
+                if (Physics.Raycast(transform.position, new Vector3(transform.right.x - 120, 0, transform.right.z + 360), out hit, 10f, destruir))
+                {
+                    Destroy(hit.collider.gameObject);
+                }
+                if (Physics.Raycast(transform.position, new Vector3(-transform.right.x + 120, 0, transform.right.z + 360), out hit, 10f, destruir))
+                {
+                    Destroy(hit.collider.gameObject);
+                }
+                if (Physics.Raycast(transform.position, new Vector3(-transform.right.x, 0, transform.forward.z), out hit, 10f, destruir))
+                {
+                    Destroy(hit.collider.gameObject);
+                }
             }
             #endregion
         }
@@ -208,6 +224,10 @@ public class Player : MonoBehaviour
     {
         Gizmos.color = Color.black;
         Gizmos.DrawRay(transform.position, transform.forward * 10f);
+        Gizmos.DrawRay(transform.position, new Vector3(transform.right.x,0,transform.forward.z) * 10f);
+        Gizmos.DrawRay(transform.position, new Vector3(transform.right.x -120, 0, transform.right.z+360) * 0.05f);
+        Gizmos.DrawRay(transform.position, new Vector3(-transform.right.x + 120, 0, transform.right.z + 360) * 0.05f);
+        Gizmos.DrawRay(transform.position, new Vector3(-transform.right.x, 0, transform.forward.z) * 10f);
     }
 
     public void Move()
