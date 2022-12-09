@@ -9,12 +9,21 @@ public class GameManaguer : MonoBehaviour
     public int costeVelocidad;
     public int costeInvulnerable;
     public int costeRomper;
+    [HideInInspector]
     public GameObject moneda;
+    [HideInInspector]
     public GameObject moneda2;
+    [HideInInspector]
     public GameObject textInvul;
+    [HideInInspector]
     public GameObject textDestru;
+    [HideInInspector]
     public GameObject textVelo;
+    [HideInInspector]
     public GameObject player;
+    public Button ButtonInvul;
+    public Button ButtonVelo;
+    public Button ButtonDestru;
     public static GameManaguer gameManaguer;
 
     private void Start()
@@ -77,6 +86,30 @@ public class GameManaguer : MonoBehaviour
                 moneda2 = GameObject.FindGameObjectWithTag("2");
             }
             moneda2.GetComponent<Text>().text = Player.metros.ToString();
+        }
+        if (puntuaje.puntuaje < costeVelocidad)
+        {
+            ButtonVelo.enabled = false;
+        }
+        else
+        {
+            ButtonVelo.enabled = true;
+        }
+        if (puntuaje.puntuaje < costeInvulnerable)
+        {
+            ButtonInvul.enabled = false;
+        }
+        else
+        {
+            ButtonInvul.enabled = true;
+        }
+        if (puntuaje.puntuaje < costeRomper)
+        {
+            ButtonDestru.enabled = false;
+        }
+        else
+        {
+            ButtonDestru.enabled = true;
         }
     }
 
