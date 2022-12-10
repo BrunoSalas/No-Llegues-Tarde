@@ -38,7 +38,7 @@ public class Player : MonoBehaviour
     private bool teChocaste = false;
     [HideInInspector]
     public bool perder;
-    public AudioClip audio, motoAvanzando, motoGirando, choque;
+    public AudioClip audio, motoAvanzando, motoGirando, choque,destruitSound,invulnerableSound,velocidadSound;
     public AudioSource audioSource;
     public AudioSource audioChoque;
     public GameObject moneda;
@@ -48,6 +48,8 @@ public class Player : MonoBehaviour
     public GameObject motoristaNormal;
     public GameObject motoristaFantasma;
     public ParticleSystem invulnerableParticle;
+    public ParticleSystem SlowParticle;
+    public GameObject DestruirParticle;
     public GameObject idle;
     public Text text;
     public Text textMetros;
@@ -191,23 +193,46 @@ public class Player : MonoBehaviour
                 }
                 if (Physics.Raycast(transform.position, transform.forward, out hit, 10f,destruir))
                 {
-                    Destroy(hit.collider.gameObject);
+                    if (hit.collider)
+                    {
+                        GameObject _ = Instantiate(DestruirParticle);
+                        _.transform.position = m.transform.position;
+                        audioSource.PlayOneShot(destruitSound);
+                        Destroy(hit.collider.gameObject);
+                        Destroy(_, 2f);
+                    }
                 }
                 if (Physics.Raycast(transform.position, new Vector3(transform.right.x, 0, transform.forward.z), out hit, 10f, destruir))
                 {
+                    GameObject _ = Instantiate(DestruirParticle);
+                    _.transform.position = m.transform.position;
+                    audioSource.PlayOneShot(destruitSound);
                     Destroy(hit.collider.gameObject);
+                    Destroy(_, 2f);
                 }
                 if (Physics.Raycast(transform.position, new Vector3(transform.right.x - 120, 0, transform.right.z + 360), out hit, 10f, destruir))
                 {
+                    GameObject _ = Instantiate(DestruirParticle);
+                    _.transform.position = m.transform.position;
+                    audioSource.PlayOneShot(destruitSound);
                     Destroy(hit.collider.gameObject);
+                    Destroy(_, 2f);
                 }
                 if (Physics.Raycast(transform.position, new Vector3(-transform.right.x + 120, 0, transform.right.z + 360), out hit, 10f, destruir))
                 {
+                    GameObject _ = Instantiate(DestruirParticle);
+                    _.transform.position = m.transform.position;
+                    audioSource.PlayOneShot(destruitSound);
                     Destroy(hit.collider.gameObject);
+                    Destroy(_, 2f);
                 }
                 if (Physics.Raycast(transform.position, new Vector3(-transform.right.x, 0, transform.forward.z), out hit, 10f, destruir))
                 {
+                    GameObject _ = Instantiate(DestruirParticle);
+                    _.transform.position = m.transform.position;
+                    audioSource.PlayOneShot(destruitSound);
                     Destroy(hit.collider.gameObject);
+                    Destroy(_, 2f);
                 }
             }
             #endregion
@@ -303,11 +328,6 @@ public class Player : MonoBehaviour
             spawnManager.SpawnTriggerObstacle();
         }
     }
-
-    private void OnTriggerExit(Collider other)
-    {
-    }
-   
     IEnumerator Perdiste()
     {
         state = states.Muerto;

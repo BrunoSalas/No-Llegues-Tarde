@@ -19,8 +19,7 @@ public class GameManaguer : MonoBehaviour
     public GameObject textDestru;
     [HideInInspector]
     public GameObject textVelo;
-    [HideInInspector]
-    public GameObject player;
+    public Player player;
     public Button ButtonInvul;
     public Button ButtonVelo;
     public Button ButtonDestru;
@@ -32,8 +31,9 @@ public class GameManaguer : MonoBehaviour
         Application.targetFrameRate = 120;
         gameManaguer = this;
 
-        player = GameObject.FindGameObjectWithTag("Player");
         GameObject[] objs = GameObject.FindGameObjectsWithTag("Cerebro");
+        player.SlowParticle.Stop();
+        player.invulnerableParticle.Stop();
 
     }
 
@@ -66,12 +66,7 @@ public class GameManaguer : MonoBehaviour
         {
             textInvul.GetComponent<Text>().text = costeInvulnerable.ToString();
         }
-
-        if (player == null)
-        {
-            player = GameObject.FindGameObjectWithTag("Player");    
-        }
-        if (player.GetComponent<Player>().perder == false)
+        if (player.perder == false)
         {
             if (moneda == null)
             {
@@ -79,7 +74,7 @@ public class GameManaguer : MonoBehaviour
             }
             moneda.GetComponent<Text>().text = puntuaje.puntuaje.ToString();
         }
-        if (player.GetComponent<Player>().perder == true)
+        if (player.perder == true)
         {
             if (moneda2 == null)
             {
@@ -118,9 +113,11 @@ public class GameManaguer : MonoBehaviour
     {
         if (puntuaje.puntuaje >= costeVelocidad)
         {
-            player.GetComponent<Player>().velocity = 0.7f;
-            player.GetComponent<Player>().x = 0.2f;
-            player.GetComponent<Player>().velocityCould = true;
+            player.SlowParticle.Play(true);
+            player.audioSource.PlayOneShot(player.velocidadSound);
+            player.velocity = 0.7f;
+            player.x = 0.2f;
+            player.velocityCould = true;
             puntuaje.puntuaje -= costeVelocidad;
             costeVelocidad += costeVelocidad;
         }
@@ -129,9 +126,10 @@ public class GameManaguer : MonoBehaviour
     {
         if (puntuaje.puntuaje >= costeInvulnerable)
         {
-            player.GetComponent<Player>().invulnerableParticle.Play(true);
-            player.GetComponent<Player>().invulnerable = true;
-            player.GetComponent<Player>().rb.isKinematic = true;
+            player.invulnerableParticle.Play(true);
+            player.audioSource.PlayOneShot(player.invulnerableSound);
+            player.invulnerable = true;
+            player.rb.isKinematic = true;
             puntuaje.puntuaje -= costeInvulnerable;
             costeInvulnerable += costeInvulnerable;
         }
@@ -140,7 +138,7 @@ public class GameManaguer : MonoBehaviour
     {
         if (puntuaje.puntuaje >= costeRomper)
         {
-            player.GetComponent<Player>().colliderDestruir = true;
+            player.colliderDestruir = true;
             puntuaje.puntuaje -= costeRomper;
             costeInvulnerable += costeRomper;
         }
