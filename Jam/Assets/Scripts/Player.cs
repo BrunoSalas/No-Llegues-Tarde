@@ -195,44 +195,33 @@ public class Player : MonoBehaviour
                 {
                     if (hit.collider)
                     {
-                        GameObject _ = Instantiate(DestruirParticle);
-                        _.transform.position = m.transform.position;
                         audioSource.PlayOneShot(destruitSound);
                         Destroy(hit.collider.gameObject);
-                        Destroy(_, 2f);
                     }
                 }
                 if (Physics.Raycast(transform.position, new Vector3(transform.right.x, 0, transform.forward.z), out hit, 10f, destruir))
                 {
-                    GameObject _ = Instantiate(DestruirParticle);
-                    _.transform.position = m.transform.position;
+
                     audioSource.PlayOneShot(destruitSound);
                     Destroy(hit.collider.gameObject);
-                    Destroy(_, 2f);
                 }
                 if (Physics.Raycast(transform.position, new Vector3(transform.right.x - 120, 0, transform.right.z + 360), out hit, 10f, destruir))
                 {
-                    GameObject _ = Instantiate(DestruirParticle);
-                    _.transform.position = m.transform.position;
+
                     audioSource.PlayOneShot(destruitSound);
                     Destroy(hit.collider.gameObject);
-                    Destroy(_, 2f);
                 }
                 if (Physics.Raycast(transform.position, new Vector3(-transform.right.x + 120, 0, transform.right.z + 360), out hit, 10f, destruir))
                 {
-                    GameObject _ = Instantiate(DestruirParticle);
-                    _.transform.position = m.transform.position;
+
                     audioSource.PlayOneShot(destruitSound);
                     Destroy(hit.collider.gameObject);
-                    Destroy(_, 2f);
                 }
                 if (Physics.Raycast(transform.position, new Vector3(-transform.right.x, 0, transform.forward.z), out hit, 10f, destruir))
                 {
-                    GameObject _ = Instantiate(DestruirParticle);
-                    _.transform.position = m.transform.position;
+
                     audioSource.PlayOneShot(destruitSound);
                     Destroy(hit.collider.gameObject);
-                    Destroy(_, 2f);
                 }
             }
             #endregion
