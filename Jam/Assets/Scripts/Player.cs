@@ -167,17 +167,19 @@ public class Player : MonoBehaviour
             #region power ups
             if (invulnerable)
             {
-                motoristaNormal.SetActive(false);
-                motoristaFantasma.SetActive(true);
+                StartCoroutine(Blink());
                 timeInvulnerable += Time.deltaTime;
                 if (timeInvulnerable >= timeMaxInvulnerable)
                 {
                     invulnerable = false;
                     rb.isKinematic = false;
                     timeInvulnerable = 0;
-                    motoristaNormal.SetActive(true);
-                    motoristaFantasma.SetActive(false);
                 }
+            }
+            else if (invulnerable == false)
+            {
+                motoristaNormal.SetActive(true);
+                motoristaFantasma.SetActive(false);
             }
             if (colliderDestruir)
             {
@@ -320,5 +322,22 @@ public class Player : MonoBehaviour
          yield return new WaitForSeconds(1);
         perder = true;
 
+    }
+    IEnumerator Blink()
+    {
+        motoristaNormal.SetActive(false);
+        motoristaFantasma.SetActive(true);
+        yield return new WaitForSeconds(timeMaxInvulnerable/2);
+        motoristaNormal.SetActive(true);
+        motoristaFantasma.SetActive(false);
+        yield return new WaitForSeconds(0.1f);
+        motoristaNormal.SetActive(false);
+        motoristaFantasma.SetActive(true);
+        yield return new WaitForSeconds(0.1f);
+        motoristaNormal.SetActive(true);
+        motoristaFantasma.SetActive(false);
+        yield return new WaitForSeconds(0.1f);
+        motoristaNormal.SetActive(false);
+        motoristaFantasma.SetActive(true);
     }
 }
