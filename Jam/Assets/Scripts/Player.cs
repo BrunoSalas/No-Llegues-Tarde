@@ -45,6 +45,7 @@ public class Player : MonoBehaviour
     public GameObject humo;
     public GameObject h;
     public GameObject m;
+    public ParticleSystem invulnerableParticle;
     public GameObject idle;
     public Text text;
     public Text textMetros;
@@ -251,7 +252,7 @@ public class Player : MonoBehaviour
 
     public void Move()
     {
-        float hor = Mathf.Clamp(transform.position.x + sides, -4.27f, 4.27f); // nota esto hace que no pase de izquierda a derecha siin collideer eficiente
+        float hor = Mathf.Clamp(transform.position.x + sides, -4.01f, 4.01f); // nota esto hace que no pase de izquierda a derecha siin collideer eficiente
         Vector3 direction = new Vector3(hor, 0.57f, transform.position.z + velocity);
         //transform.position = new Vector3(direction.x, transform.position.y, direction.y);
         rb.position = direction;

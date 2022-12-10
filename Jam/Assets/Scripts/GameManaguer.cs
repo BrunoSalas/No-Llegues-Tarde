@@ -29,7 +29,7 @@ public class GameManaguer : MonoBehaviour
     private void Start()
     {
         puntuaje.puntuaje = 0;
-            
+        Application.targetFrameRate = 120;
         gameManaguer = this;
 
         player = GameObject.FindGameObjectWithTag("Player");
@@ -129,6 +129,7 @@ public class GameManaguer : MonoBehaviour
     {
         if (puntuaje.puntuaje >= costeInvulnerable)
         {
+            player.GetComponent<Player>().invulnerableParticle.Play(true);
             player.GetComponent<Player>().invulnerable = true;
             player.GetComponent<Player>().rb.isKinematic = true;
             puntuaje.puntuaje -= costeInvulnerable;
