@@ -45,6 +45,8 @@ public class Player : MonoBehaviour
     public GameObject humo;
     public GameObject h;
     public GameObject m;
+    public GameObject motoristaNormal;
+    public GameObject motoristaFantasma;
     public ParticleSystem invulnerableParticle;
     public GameObject idle;
     public Text text;
@@ -165,12 +167,16 @@ public class Player : MonoBehaviour
             #region power ups
             if (invulnerable)
             {
+                motoristaNormal.SetActive(false);
+                motoristaFantasma.SetActive(true);
                 timeInvulnerable += Time.deltaTime;
                 if (timeInvulnerable >= timeMaxInvulnerable)
                 {
                     invulnerable = false;
                     rb.isKinematic = false;
                     timeInvulnerable = 0;
+                    motoristaNormal.SetActive(true);
+                    motoristaFantasma.SetActive(false);
                 }
             }
             if (colliderDestruir)
