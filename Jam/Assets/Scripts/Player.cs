@@ -320,6 +320,9 @@ public class Player : MonoBehaviour
     }
     IEnumerator Perdiste()
     {
+        StopCoroutine(Blink());
+        motoristaNormal.SetActive(true);
+        motoristaFantasma.SetActive(false);
         state = states.Muerto;
         Debug.Log("Uy te chocaste xdddd");
         GameObject _ = Instantiate(humo);
