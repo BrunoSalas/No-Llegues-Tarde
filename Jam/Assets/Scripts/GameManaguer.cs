@@ -139,6 +139,7 @@ public class GameManaguer : MonoBehaviour
         if (puntuaje.puntuaje >= costeRomper)
         {
             player.colliderDestruir = true;
+            player.DestruirParticle.SetActive(true);
             puntuaje.puntuaje -= costeRomper;
             costeInvulnerable += costeRomper;
         }

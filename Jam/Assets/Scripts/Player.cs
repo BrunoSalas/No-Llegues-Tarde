@@ -190,6 +190,7 @@ public class Player : MonoBehaviour
                 {
                     colliderDestruir = false;
                     timeDestru = 0;
+                    DestruirParticle.SetActive(false);
                 }
                 if (Physics.Raycast(transform.position, transform.forward, out hit, 10f,destruir))
                 {

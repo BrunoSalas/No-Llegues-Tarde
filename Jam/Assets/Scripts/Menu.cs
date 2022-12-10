@@ -8,6 +8,8 @@ public class Menu : MonoBehaviour
     public GameObject game;
     public GameObject menu;
     public GameObject instruciones;
+    public GameObject instruciones1;
+    public GameObject instruciones2;
     public GameObject player;
     public GameObject pierde;
     public GameObject creditos;
@@ -50,10 +52,8 @@ public class Menu : MonoBehaviour
     public void Tuto2()
     {
         audioSource.PlayOneShot(audio);
-        instruciones.SetActive(false);
-        player.GetComponent<Player>().init = true;
-        player.GetComponent<Player>().velocity = 0.7f;
-        game.SetActive(true);
+        instruciones1.SetActive(false);
+        instruciones2.SetActive(true);
     }
     public void Inicio()
     {
